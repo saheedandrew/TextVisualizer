@@ -1,0 +1,23 @@
+.example-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3%;
+      }
+      
+      .example-container > * {
+        width: 100%;
+      }
+
+      .example-container2{
+          margin-left:45%;
+      }
+
+      .matty{
+          width: 1420px;
+      }
+
+      .matty2{
+          width: 1420px;
+      }
+
+      
