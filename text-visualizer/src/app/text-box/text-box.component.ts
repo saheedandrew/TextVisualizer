@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { PicComponent } from './pic/pic.component';
 import { MatDialogRef } from '@angular/material';
+import { TestBoxService} from '../text-box/test-box.service'
 
 // import {MatDialogModule} from '../app.module'
 
@@ -11,13 +12,15 @@ import { MatDialogRef } from '@angular/material';
   styleUrls: ['./text-box.component.scss']
 })
 export class TextBoxComponent implements OnInit {
+  tbService : TestBoxService;
+  private data: any;
 
    /**
    * getValue
    */
   public getValue(textBox: Text) {
     console.log(textBox);  
-    return textBox; 
+    this.tbService.getImage(textBox).subscribe(data => this.data);
   }
 
    onCreate(){

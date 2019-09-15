@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+
 
 @Component({
   selector: 'app-pic',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PicComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<PicComponent>) { }
 
   ngOnInit() {
   }
+  close(): void {
+
+    this.dialogRef.close();
+  }
+
 
 }
