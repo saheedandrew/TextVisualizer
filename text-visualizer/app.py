@@ -27,9 +27,13 @@ def _analyze():
     strings = string.split('.')
     
     for string in strings:
-        links = analyze_entry(string)
+        links, keywords = analyze_entry(string)
         
-        response['sentences'].append({string: links})
+        response['sentences'].append({
+            'sentence' : string,
+            'keywords' : keywords,
+            'links' : links
+        })
     print(response)
     return jsonify(response)
 
@@ -55,6 +59,7 @@ def analyze_entry(text_content):
     response = client.analyze_entities(document, encoding_type=encoding_type)
 
     link = []
+    keywords = []
 
     for entity in response.entities:
         if (enums.Entity.Type(entity.type).name != 'OTHER'  and 
@@ -63,7 +68,8 @@ def analyze_entry(text_content):
            enums.Entity.Type(entity.type).name != 'ADDRESS' and
            enums.Entity.Type(entity.type).name != 'LOCATION'):
             print(u'Representative name for the entity: {}'.format(entity.name))
+            keywords.append(entity.name)
             image = google_search(entity.name, cse_key, cse_id, num=1, searchType='image')
             print(image[0]['link'])
             link.append(image[0]['link'])
-    return link
+    return link, keywords
