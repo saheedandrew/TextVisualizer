@@ -38,7 +38,7 @@ export class TestBoxService {
 
 
 
-  private requestUrl = "http://127.0.0.1:5000/_analyze" ;
+  private requestUrl = "https://vvlearning-1568432045227.appspot.com/_analyze" ;
 
 
  
