@@ -13,6 +13,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PicComponent } from './text-box/pic/pic.component';
 import {TestBoxModule} from './/text-box/text-box.module'
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 
@@ -35,7 +36,8 @@ import {TestBoxModule} from './/text-box/text-box.module'
     MatGridListModule,
     MatInputModule,
     MatDialogModule,
-    TestBoxModule
+    TestBoxModule,
+    HttpClientModule
     
     
 

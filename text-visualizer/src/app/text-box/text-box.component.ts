@@ -12,15 +12,17 @@ import { TestBoxService} from '../text-box/test-box.service'
   styleUrls: ['./text-box.component.scss']
 })
 export class TextBoxComponent implements OnInit {
-  tbService : TestBoxService;
-  private data: any;
+  ;
+  private data: JSON;
 
    /**
    * getValue
    */
   public getValue(textBox: Text) {
     console.log(textBox);  
-    this.tbService.getImage(textBox).subscribe(data => this.data);
+    this.tbService.getImage(textBox).subscribe(data => {
+      this.data = data});
+    console.log(this.data)
   }
 
    onCreate(){
@@ -33,7 +35,7 @@ export class TextBoxComponent implements OnInit {
 
 
 
-  constructor(private formDialog : MatDialog ) { }
+  constructor(private formDialog : MatDialog, private tbService : TestBoxService ) { }
 
 
   ngOnInit() {

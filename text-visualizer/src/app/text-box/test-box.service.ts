@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 import { catchError, retry,  } from 'rxjs/operators';
 import { throwError, concat, of } from 'rxjs';
 
-const httpOptions ={
-  headers : new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestBoxService {
+
+  private httpOptions ={
+    headers : new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*'
+    })
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -36,7 +38,7 @@ export class TestBoxService {
 
 
 
-  private requestUrl: "http://127.0.0.1:5000/_analyze" ;
+  private requestUrl = "http://127.0.0.1:5000/_analyze" ;
 
 
  
@@ -45,8 +47,9 @@ export class TestBoxService {
 
 
 
-  getImage(text2 : Text): Observable<String>{
-    return this.http.post<String>(this.requestUrl,text2,httpOptions).pipe(
+  getImage(text2 : Text): Observable<JSON>{
+    console.log(this.requestUrl);
+    return this.http.post<JSON>(this.requestUrl,text2,this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
