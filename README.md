@@ -4,4 +4,4 @@ Angular/ Python Flask App built with a team of four that takes a text analyzes i
 
 ## Angular Server
 
-Run `npm install` to install Angular requirements
+Run `npm install` to install Angular requirements.
